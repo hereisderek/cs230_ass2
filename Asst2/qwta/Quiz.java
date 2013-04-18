@@ -76,6 +76,7 @@ public class Quiz {
 
 	public Quiz(String n, Course c, int ma, SummaryStatistic sstat) {
 		name = n;
+		//System.out.println(name);
 		assigned = c;
 		maxAttempts = ma;
 		summaryMethod = sstat;

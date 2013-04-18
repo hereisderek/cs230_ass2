@@ -11,8 +11,9 @@ public class QuizTest {
 
 	private Quiz quiz1, quizMax, quizAvg, quizLast;
 	private Vector<Integer> vector1 = new Vector<Integer>();
-	private Course course = new Course("course name", new Instructor(
+	private Course course = new Course("course_name", new Instructor(
 			"Instructor of a course"));
+	private Scoresheet scoresheet; 
 
 	@Before
 	public void setUp() {
@@ -23,7 +24,7 @@ public class QuizTest {
 		vector1.add(20);
 		vector1.add(30);
 		vector1.add(20);
-
+		scoresheet = new Scoresheet(quizAvg, new Marksheet(new Student("student1"), course));
 	}
 
 	// coverage of the three methods for computing a SummaryStatistic on a
@@ -100,10 +101,6 @@ public class QuizTest {
 		assertEquals((Integer) 20, quiz1.summariseScores(vector1));
 	}
 
-	/*
-	 * @Test public void testSitQuiz() { fail("Not yet implemented"); }
-	 */
-
 	// @Test
 	// public void testSummariseScoresAvg() {
 	// //assertEquals("testSummariseScores 1: ", 100,
@@ -111,9 +108,30 @@ public class QuizTest {
 	// assertEquals((Integer)20, quiz1.summariseScores(vector1));
 	// }
 
-	// @Test
-	// public void testQuiz() {
-	// fail("Not yet implemented");
-	// }
+	// test 3 attempts
+	@Test
+	public void testSitQuizAttemptThreeTimes(){
+//		Scoresheet scoresheet= new Scoresheet(quizAvg, new Marksheet(new Student("student1"), course));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		scoresheet.reportOnScoresForStudent();
+		scoresheet.reportScoresToInstructor();
+	}
+	
+	// test one more attempt 
+	@Test
+	public void testSitQuizAttemptBeyondLimitedTimes(){
+//		Scoresheet scoresheet= new Scoresheet(quizAvg, new Marksheet(new Student("student1"), course));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		assertEquals(0, quizAvg.sitQuiz(scoresheet));
+		scoresheet.reportOnScoresForStudent();
+		scoresheet.reportScoresToInstructor();
+	}
 
 }
