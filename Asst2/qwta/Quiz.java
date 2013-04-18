@@ -1,0 +1,84 @@
+package qwta;
+// BUGFIX
+import java.util.Iterator;
+import java.util.Vector;
+import java.util.Collections;
+
+public class Quiz {
+
+	public String name;
+	public Course assigned;
+	public int maxAttempts; // limits the # of attempts per student
+	public SummaryStatistic summaryMethod; // defines how marks are computed
+
+	public Vector<Scoresheet> scored;
+
+	public int sitQuiz(Scoresheet ss) {
+		// In an included QM use-case, our student would get a new score
+		// whenever they sit ss.scored,
+		// but our simulated students always get a zero score from our simulated
+		// QM!
+		int score = 0;
+		// QuizWhiz now adds the new score to the student's scoresheet
+		ss.addScore(score);
+		return score;
+	}
+
+	public Integer summariseScores(Vector<Integer> sv) {
+		//  detect all none integer element and delete them
+		String exceptionMsg = "";
+		int i = 0;
+		try {
+			for (i = 0; i < sv.size(); i++) {
+//				BUGFIX detect null element and remove it from the vector
+				if (sv.get(i) == null) {
+					sv.remove(i);
+					exceptionMsg = "null element at index: " + i;
+					throw new NullPointerException(exceptionMsg);
+				}
+				//  BUGFIX detect negative number and remove it from the vector 
+				if (sv.get(i) < 0) {
+					int nagetiveNum = sv.remove(i);
+					exceptionMsg = ("negative score: " + nagetiveNum + " at index: " + i);
+					throw new Exception(exceptionMsg);
+				}
+				
+			}
+		} catch (ClassCastException e){
+			// BUGFIX: not an Integer element in the Vector 
+//			exceptionMsg = ("not an Integer element: " + sv.get(i).toString());
+//			System.err.println(exceptionMsg);
+			exceptionMsg = ("" + sv.remove(i));
+			System.err.println(e.toString() + ": " + exceptionMsg);
+		} catch (Exception e) {
+			System.err.println(e.toString());
+			//e.printStackTrace();
+		}
+		switch (summaryMethod) {
+
+		case LAST_SCORE:
+			return (sv.lastElement());
+
+		case AVG_SCORE:
+			Iterator<Integer> si = sv.listIterator();
+			Integer sum = 0;
+			while (si.hasNext()) {
+				sum += si.next();
+			}
+			return ((sv.size() == 0) ? null : (sum / sv.size()));
+
+		default:
+		case MAX_SCORE:
+			return (Collections.max(sv));
+
+		}
+	}
+
+	public Quiz(String n, Course c, int ma, SummaryStatistic sstat) {
+		name = n;
+		assigned = c;
+		maxAttempts = ma;
+		summaryMethod = sstat;
+	}
+
+}
