@@ -115,11 +115,11 @@ public class QuizTest {
 		assertEquals(0, quizAvg.sitQuiz(scoresheet));
 		assertEquals(0, quizAvg.sitQuiz(scoresheet));
 		assertEquals(0, quizAvg.sitQuiz(scoresheet));
-		scoresheet.reportOnScoresForStudent();
-		scoresheet.reportScoresToInstructor();
+//		scoresheet.reportOnScoresForStudent();
+//		scoresheet.reportScoresToInstructor();
 	}
-	
-	// test one more attempt 
+	// BUGFIX
+	// test more attempt than allowed 
 	@Test
 	public void testSitQuizAttemptBeyondLimitedTimes(){
 //		Scoresheet scoresheet= new Scoresheet(quizAvg, new Marksheet(new Student("student1"), course));
@@ -130,8 +130,20 @@ public class QuizTest {
 		assertEquals(0, quizAvg.sitQuiz(scoresheet));
 		assertEquals(0, quizAvg.sitQuiz(scoresheet));
 		assertEquals(0, quizAvg.sitQuiz(scoresheet));
-		scoresheet.reportOnScoresForStudent();
-		scoresheet.reportScoresToInstructor();
+//		scoresheet.reportOnScoresForStudent();
+//		scoresheet.reportScoresToInstructor();
 	}
 
+	//@SuppressWarnings("deprecation")
+	@Test
+	public void testScaledMark() {
+		int maxScore = 10;		//highest value that QuestionMark will award to any student taking this quiz.
+		double maxMarks = 0.6;	//scale a student’s summarised score
+		quizAvg.maxScore = maxScore;
+		quizAvg.maxMarks = maxMarks;
+		//assertEquals(10, quizAvg.scaledMark(vector1));
+		System.out.println(quizAvg.scaledMark(vector1));
+		assertTrue("testScaledMark1", quizAvg.scaledMark(vector1) == 1.2);
+		//assertEquals(quizAvg.summariseScores(vector1) / maxScore * maxMarks, quizAvg.scaledMark(vector1));
+	}
 }

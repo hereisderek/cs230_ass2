@@ -19,6 +19,7 @@ public class QuizWhizTestApp {
 		// After all students have attempted the quiz, the instructor will ask for a report.
 		i1.teachCourse( c1, qw1 );
 		
+		
 		// Finally: tell s1 to ask for a report.  
 		// (I assume students will either retain a reference to their scoresheet, or will be able to find it on Cecil.)
 		s1.requestReport();  

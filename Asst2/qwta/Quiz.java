@@ -12,7 +12,11 @@ public class Quiz {
 	public SummaryStatistic summaryMethod; // defines how marks are computed
 
 	public Vector<Scoresheet> scored;
-
+	
+	public int maxScore;		//highest value that QuestionMark will award to any student taking this quiz.
+	public double maxMarks;	//scale a student’s summarised score
+//	scaledMarks() = summarisedScore / maxScore * maxMarks.
+	
 	public int sitQuiz(Scoresheet ss) {
 		// In an included QM use-case, our student would get a new score
 		// whenever they sit ss.scored,
@@ -74,6 +78,10 @@ public class Quiz {
 		}
 	}
 
+	public double scaledMark(Vector<Integer> sv){
+//		quiz.summariseScores(sv);
+		return this.summariseScores(sv) / maxScore * maxMarks;
+	}
 	public Quiz(String n, Course c, int ma, SummaryStatistic sstat) {
 		name = n;
 		//System.out.println(name);

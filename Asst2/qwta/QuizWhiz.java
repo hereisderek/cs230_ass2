@@ -8,6 +8,7 @@ public class QuizWhiz {
 	public Quiz createQuiz(String qn, Course c ) {
 		return createQuiz( qn, c, 3, SummaryStatistic.AVG_SCORE );
 	}
+	
 
 	public Quiz createQuiz(String qn, Course c, int ma, SummaryStatistic sstat) {
 		// use QM to create a quiz
@@ -45,5 +46,4 @@ public class QuizWhiz {
 			System.out.println(); // blank line after each course
 		}
 	}
-
 }
