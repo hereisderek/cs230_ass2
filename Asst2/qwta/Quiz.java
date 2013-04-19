@@ -13,8 +13,8 @@ public class Quiz {
 
 	public Vector<Scoresheet> scored;
 	
-	public int maxScore;		//highest value that QuestionMark will award to any student taking this quiz.
-	public double maxMarks;	//scale a student’s summarised score
+	public int maxScore = 10;		//highest value that QuestionMark will award to any student taking this quiz.
+	public double maxMarks = 0.6;	//scale a student’s summarised score
 //	scaledMarks() = summarisedScore / maxScore * maxMarks.
 	
 	public int sitQuiz(Scoresheet ss) {
@@ -29,7 +29,7 @@ public class Quiz {
 	}
 	
 	// BUGFIX change return type from Integer to float
-	public float summariseScores(Vector<Integer> sv) {
+	public Integer summariseScores(Vector<Integer> sv) {
 		//  detect all none integer element and delete them
 		String exceptionMsg = "";
 		int i = 0;
@@ -81,7 +81,8 @@ public class Quiz {
 
 	public double scaledMark(Vector<Integer> sv){
 //		quiz.summariseScores(sv);
-		return this.summariseScores(sv) / maxScore * maxMarks;
+		double temp = (double)this.summariseScores(sv) / maxScore * maxMarks;
+		return temp;
 	}
 	public Quiz(String n, Course c, int ma, SummaryStatistic sstat) {
 		name = n;

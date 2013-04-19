@@ -34,7 +34,7 @@ public class Scoresheet {
 		outstr = "Report for student " + recorded.marked.name + ": ";
 		outstr += "In " + (recorded.assessed).name + ", you made ";
 		outstr += attemptsAt() + scored.name;
-		outstr += ".  Marks = " + scored.summariseScores( scores );
+		outstr += ".  Marks = " + scored.scaledMark(scores)/*summariseScores( scores )*/;
 		System.out.println( outstr ); 
 	}
 
@@ -43,7 +43,7 @@ public class Scoresheet {
 		retval = "In " + recorded.assessed.name;
 		retval += ", student " + recorded.marked.name + " made ";
 		retval += attemptsAt() + scored.name;
-		retval += ".  Marks = " + scored.summariseScores( scores );
+		retval += ".  Marks = " + scored.scaledMark(scores)/*summariseScores( scores )*/;
 		//System.out.println(retval);
 		return retval;
 	}

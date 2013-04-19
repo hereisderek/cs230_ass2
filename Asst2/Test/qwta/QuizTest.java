@@ -37,7 +37,7 @@ public class QuizTest {
 	// vector of integer scores
 	@Test
 	public void testSummariseScoresMax() {
-		assertEquals(30, quizMax.summariseScores(vector1));
+		assertEquals((Integer) 30, quizMax.summariseScores(vector1));
 	}
 
 	@Test
@@ -92,7 +92,8 @@ public class QuizTest {
 		quiz1 = new Quiz("quiz1", course, 5, SummaryStatistic.AVG_SCORE);
 		Vector vector2 = new Vector(vector1);
 		vector2.add("hello");
-		assertEquals( 20, quiz1.summariseScores(vector2));
+		// cause a error: JAVA_TYPE_SAFETY_SUCCESSFUL_TEST UNVERIFIED_BUG
+		assertEquals((Integer) 20, quiz1.summariseScores(vector2));
 	}
 	@Test
 	public void testSummariseScoresMoreNoneIntegerElementMax() {
