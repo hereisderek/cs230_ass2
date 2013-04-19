@@ -44,8 +44,7 @@ public class Scoresheet {
 		retval += ", student " + recorded.marked.name + " made ";
 		retval += attemptsAt() + scored.name;
 		retval += ".  Marks = " + scored.summariseScores( scores );
-		// BUGFIX display the report here
-		System.out.println(retval);
+		//System.out.println(retval);
 		return retval;
 	}
 

@@ -4,7 +4,6 @@ public class QuizWhizTestApp {
 
 
 	public static void main(String[] args) {
-
 		// First: instantiate one student, one instructor, one course, and one QuizWhiz.
 		Student s1 = new Student( "S1" );
 		Instructor i1 = new Instructor( "I1" );

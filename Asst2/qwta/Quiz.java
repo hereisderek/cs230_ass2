@@ -27,8 +27,9 @@ public class Quiz {
 		ss.addScore(score);
 		return score;
 	}
-
-	public Integer summariseScores(Vector<Integer> sv) {
+	
+	// BUGFIX change return type from Integer to float
+	public float summariseScores(Vector<Integer> sv) {
 		//  detect all none integer element and delete them
 		String exceptionMsg = "";
 		int i = 0;
