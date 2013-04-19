@@ -188,7 +188,7 @@ public class QuizTest {
 	@Test 
 	public void testSitQuizAttemptZeroTimes(){
 		// not one time sitQuiz() executed
-		scoresheet.reportOnScoresForStudent();
+		//scoresheet.reportOnScoresForStudent();
 		scoresheet.reportScoresToInstructor();
 	}
 	

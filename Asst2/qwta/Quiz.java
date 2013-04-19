@@ -81,7 +81,7 @@ public class Quiz {
 
 	public double scaledMark(Vector<Integer> sv){
 //		quiz.summariseScores(sv);
-		double temp = (double)this.summariseScores(sv) / maxScore * maxMarks;
+		double temp = this.summariseScores(sv) / maxScore * maxMarks;
 		return temp;
 	}
 	public Quiz(String n, Course c, int ma, SummaryStatistic sstat) {
